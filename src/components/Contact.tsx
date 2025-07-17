@@ -22,14 +22,14 @@ const Contact = () => {
       icon: Github,
       label: "GitHub",
       value: "GitHub Profile",
-      href: "#",
+      href: "https://github.com/Sathwik-0906",
       color: "text-gray-700"
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
       value: "LinkedIn Profile",
-      href: "#",
+      href: "https://www.linkedin.com/in/sathwikgurugubelli/",
       color: "text-blue-500"
     },
     {
@@ -101,7 +101,7 @@ const Contact = () => {
                 className="bg-white/10 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm"
                 asChild
               >
-                <a href="#" download>
+                <a href="https://drive.google.com/file/d/1vffiYX1lNLBsZcMhIQmKkla9qMKYF8Qn/view?usp=sharing" download>
                   <Download className="mr-2 h-5 w-5" />
                   Download Resume
                 </a>
