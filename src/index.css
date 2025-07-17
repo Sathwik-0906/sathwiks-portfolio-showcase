@@ -83,3 +83,15 @@
     transform-origin: center;
   }
 }
+
+.animate-fade-in {
+  animation-name: fadeIn;
+}
+.animate-float {
+  animation-name: float;
+}
+
+.stagger-1 { animation-delay: 0.2s; }
+.stagger-2 { animation-delay: 0.4s; }
+.stagger-3 { animation-delay: 0.6s; }
+.stagger-4 { animation-delay: 0.8s; }
