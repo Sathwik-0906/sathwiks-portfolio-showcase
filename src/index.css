@@ -41,59 +41,142 @@
     overflow-x: hidden;
   }
   section {
-    @apply py-24 sm:py-32;
+    @apply relative py-24 sm:py-32;
   }
 }
 
 @layer components {
+  /* Text Styles */
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-neon-purple to-neon-cyan;
   }
+  .hero-title {
+    text-shadow: 0 0 15px hsl(var(--neon-purple) / 0.6), 0 0 35px hsl(var(--neon-purple) / 0.4);
+    animation: fadeIn 1s ease-out, title-breathing 4s infinite alternate;
+  }
+  .hero-subtitle {
+    animation: fadeIn 1s 0.2s ease-out backwards, text-glow 3s infinite alternate;
+  }
 
+  /* Liquid Glass Navigation */
+  .glass-nav {
+    @apply fixed top-4 left-1/2 -translate-x-1/2 z-50 rounded-full border shadow-2xl shadow-black/50;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    border-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
+  }
+  .nav-link-3d {
+    @apply relative px-6 py-3 text-base font-medium text-slate-200 transition-all duration-300;
+  }
+  .nav-link-3d:hover {
+    @apply text-white;
+    transform: scale(1.1);
+  }
+  .magnetic-indicator {
+    @apply absolute bottom-0 left-0 h-full rounded-full bg-white/10 transition-all duration-500 ease-magnetic;
+    transform-origin: center;
+  }
+
+  /* 3D Glass Button */
   .glass-button-3d {
-    @apply relative inline-block px-8 py-4 rounded-lg text-white font-bold uppercase tracking-widest overflow-hidden transition-transform duration-300 ease-in-out;
-    transform-style: preserve-3d;
-    transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+    @apply relative inline-block px-8 py-4 rounded-lg text-white font-bold uppercase tracking-widest overflow-hidden transition-all duration-300;
   }
   .glass-button-3d::before {
     content: '';
-    @apply absolute inset-0 rounded-lg border-2 border-neon-cyan/50 bg-white/5 backdrop-blur-sm transition-all duration-300;
+    @apply absolute inset-0 rounded-lg border-2 bg-white/5 backdrop-blur-sm transition-all duration-300;
+    border-color: rgba(255, 255, 255, 0.3);
   }
   .glass-button-3d:hover::before {
-    @apply bg-white/10 border-neon-cyan;
-    box-shadow: 0 0 15px hsl(var(--neon-cyan) / 0.5), 0 0 30px hsl(var(--neon-cyan) / 0.3);
+    @apply bg-white/10;
+    border-color: hsl(var(--neon-cyan));
+    box-shadow: 0 0 20px hsl(var(--neon-cyan) / 0.5);
   }
   .glass-button-3d span {
     @apply relative z-10;
   }
+}
 
-  /* Centered and Enhanced Glass Navigation */
-  .glass-nav {
-    @apply fixed top-4 left-1/2 -translate-x-1/2 z-50 rounded-full border border-white/20 bg-slate-900/40 backdrop-blur-2xl shadow-lg shadow-black/40;
-  }
+/* New Animations */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.orbit-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: orbit-spin 60s linear infinite;
+}
+.orbit-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-style: solid;
+  border-color: hsl(var(--neon-purple) / 0.3);
+  border-radius: 50%;
+  transform-style: preserve-3d;
+}
+.ring-1 {
+  width: 60vw;
+  height: 60vw;
+  margin-left: -30vw;
+  margin-top: -30vw;
+  border-width: 2px;
+  transform: rotateX(75deg);
+  animation: ring-spin 20s linear infinite reverse;
+}
+.ring-2 {
+  width: 80vw;
+  height: 80vw;
+  margin-left: -40vw;
+  margin-top: -40vw;
+  border-width: 1px;
+  border-color: hsl(var(--neon-cyan) / 0.2);
+  transform: rotateX(75deg);
+  animation: ring-spin 30s linear infinite;
+}
+.ring-3 {
+  width: 100vw;
+  height: 100vw;
+  margin-left: -50vw;
+  margin-top: -50vw;
+  border-width: 1px;
+  border-color: hsl(var(--neon-pink) / 0.2);
+  transform: rotateX(75deg);
+  animation: ring-spin 40s linear infinite reverse;
+}
 
-  .nav-link-3d {
-    @apply relative px-6 py-3 text-base font-medium text-white/80 transition-all duration-300;
-    transform-style: preserve-3d;
+@keyframes orbit-spin {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+@keyframes ring-spin {
+  from { transform: rotateX(75deg) rotateZ(0deg); }
+  to { transform: rotateX(75deg) rotateZ(360deg); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes text-glow {
+  from { text-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.5); }
+  to { text-shadow: 0 0 20px hsl(var(--neon-cyan) / 0.7); }
+}
+@keyframes title-breathing {
+  from {
+    text-shadow: 0 0 15px hsl(var(--neon-purple) / 0.6), 0 0 35px hsl(var(--neon-purple) / 0.4);
+    transform: scale(1);
   }
-  .nav-link-3d:hover {
-    @apply text-white;
-    transform: translateZ(20px);
-  }
-  .magnetic-indicator {
-    @apply absolute bottom-0 left-0 h-full rounded-full bg-white/15 transition-all duration-500 ease-magnetic;
-    transform-origin: center;
+  to {
+    text-shadow: 0 0 25px hsl(var(--neon-purple) / 0.8), 0 0 50px hsl(var(--neon-purple) / 0.5);
+    transform: scale(1.02);
   }
 }
 
-.animate-fade-in {
-  animation-name: fadeIn;
-}
-.animate-float {
-  animation-name: float;
-}
-
+.animate-fade-in { animation: fadeIn 1s ease-out forwards; }
 .stagger-1 { animation-delay: 0.2s; }
 .stagger-2 { animation-delay: 0.4s; }
-.stagger-3 { animation-delay: 0.6s; }
-.stagger-4 { animation-delay: 0.8s; }
