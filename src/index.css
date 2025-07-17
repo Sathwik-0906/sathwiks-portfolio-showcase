@@ -272,3 +272,85 @@ All colors MUST be HSL.
     transform: translateY(0) scale(1);
   }
 }
+
+
+
+
+@layer components {
+  /* ... (keep your existing styles) ... */
+
+  .animated-grid-background {
+    background-color: hsl(var(--darker-surface));
+    background-image:
+      linear-gradient(hsl(var(--neon-purple)/.15) 1px, transparent 1px),
+      linear-gradient(to right, hsl(var(--neon-cyan)/.15) 1px, transparent 1px);
+    background-size: 4rem 4rem;
+    animation: pan-grid 20s linear infinite;
+  }
+
+  .blinking-cursor {
+    animation: blink 1s step-end infinite;
+  }
+  
+  .glitch-link {
+    text-decoration: none;
+    line-height: 1;
+  }
+  
+  .glitch-link__layers {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    color: hsl(var(--neon-cyan));
+  }
+  
+  .glitch-link__layers:nth-child(2) {
+    color: hsl(var(--neon-pink));
+  }
+  
+  .glitch-link__layers:nth-child(3) {
+    color: hsl(var(--primary));
+  }
+  
+  .glitch-link:hover .glitch-link__layers {
+    animation: glitch 350ms ease-in-out forwards;
+  }
+  
+  .glitch-link:hover .glitch-link__layers:nth-child(2) {
+    animation-delay: 50ms;
+  }
+  
+  .glitch-link:hover .glitch-link__layers:nth-child(3) {
+    animation-delay: 75ms;
+  }
+}
+
+
+@keyframes pan-grid {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 4rem 4rem;
+  }
+}
+
+@keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: hsl(var(--neon-cyan));
+  }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0,0); opacity: 1; }
+  25% { transform: translate(2px, -2px); opacity: 0.75; }
+  50% { transform: translate(-2px, 2px); opacity: 0.5; }
+  75% { transform: translate(2px, 2px); opacity: 0.75; }
+  100% { transform: translate(0,0); opacity: 1; }
+}

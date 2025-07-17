@@ -1,107 +1,62 @@
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, Github, Linkedin, MapPin, Sparkles, Code, Zap } from "lucide-react";
+import { Github, Linkedin, ArrowDown } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const Hero = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [typedTitle, setTypedTitle] = useState("");
+  const fullTitle = "Full Stack Developer";
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) * 100,
-        y: (e.clientY / window.innerHeight) * 100,
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+    // Typewriter effect
+    if (typedTitle.length < fullTitle.length) {
+      const timeout = setTimeout(() => {
+        setTypedTitle(fullTitle.slice(0, typedTitle.length + 1));
+      }, 100);
+      return () => clearTimeout(timeout);
+    }
+  }, [typedTitle]);
 
   return (
-    <section className="min-h-screen flex items-center justify-center dark-theme-background relative overflow-hidden">
-      <div 
-        className="absolute w-96 h-96 bg-neon-purple/20 rounded-full blur-3xl opacity-30 transition-all duration-1000 ease-out"
-        style={{
-          left: `${mousePosition.x}%`,
-          top: `${mousePosition.y}%`,
-          transform: 'translate(-50%, -50%)',
-        }}
-      />
+    <section id="hero" className="min-h-screen flex items-center justify-center animated-grid-background relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center max-w-5xl mx-auto">
-          <div className="animate-fade-in">
-            <h1 className="text-6xl md:text-8xl font-bold mb-6 leading-tight">
-              <span className="block text-gradient animate-fade-in stagger-1">SATHWIK</span>
-              <span className="block text-white/90 animate-fade-in stagger-2">GURUGUBELLI</span>
-            </h1>
-          </div>
-          <div className="animate-slide-up stagger-3">
-            <p className="text-2xl md:text-3xl mb-8 text-neon-cyan font-light">
-              Full Stack Developer & Computer Science Student
-            </p>
-            <p className="text-lg mb-12 text-white/80 max-w-3xl mx-auto leading-relaxed">
-              Passionate about building innovative web applications and exploring cutting-edge technologies. 
-              Currently pursuing B.Tech in Computer Science with hands-on experience in AWS, MERN stack, and full-stack development.
-            </p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-6 mb-16 animate-scale-in stagger-4">
-            <Button
-              variant="outline"
-              size="lg"
-              className="glass-card neon-border text-white hover:neon-glow group"
-              asChild
-            >
-              <a href="mailto:sathwikgurugubellipm@gmail.com">
-                <Mail className="mr-2 h-5 w-5 group-hover:text-neon-cyan transition-colors" />
-                Email Me
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-4 uppercase text-white animate-fade-in tracking-wider">
+            Sathwik Gurugubelli
+          </h1>
+          <p className="text-2xl md:text-4xl mb-8 text-neon-cyan font-mono animate-fade-in stagger-1">
+            {typedTitle}
+            <span className="blinking-cursor">|</span>
+          </p>
+          <p className="text-lg md:text-xl mb-12 text-white/70 max-w-2xl mx-auto leading-relaxed animate-fade-in stagger-2">
+            Crafting robust and scalable web applications with a passion for clean code and user-centric design.
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-4 mb-16 animate-fade-in stagger-3">
+            <Button asChild variant="gradient" size="lg" className="neon-glow group">
+              <a href="#contact">
+                Get In Touch
               </a>
             </Button>
-            <Button
-              variant="gradient"
-              size="lg"
-              className="neon-glow group"
-              asChild
-            >
-              <a href="tel:+916303804889">
-                <Phone className="mr-2 h-5 w-5 group-hover:animate-pulse" />
-                Call Me
-              </a>
+            <Button asChild variant="outline" size="lg" className="border-neon-cyan/50 text-neon-cyan hover:bg-neon-cyan/10 hover:text-neon-cyan hover:border-neon-cyan group">
+                <a href="YOUR_RESUME_LINK_HERE" download>
+                Download Resume
+                </a>
             </Button>
           </div>
-          <div className="flex flex-wrap justify-center items-center gap-8 text-white/80 animate-float-in stagger-5">
-  <a 
-    href="https://github.com/Sathwik-0906" 
-    target="_blank" 
-    rel="noopener noreferrer" 
-    className="flex items-center gap-3 group cursor-pointer"
-  >
-    <div className="p-2 bg-white/10 rounded-lg group-hover:bg-neon-purple/20 transition-all">
-      <Github className="h-6 w-6 group-hover:text-neon-purple" />
-    </div>
-    <span className="group-hover:text-white transition-colors">GitHub</span>
-  </a>
-  
-  <a 
-    href="https://www.linkedin.com/in/sathwikgurugubelli/" 
-    target="_blank" 
-    rel="noopener noreferrer" 
-    className="flex items-center gap-3 group cursor-pointer"
-  >
-    <div className="p-2 bg-white/10 rounded-lg group-hover:bg-neon-cyan/20 transition-all">
-      <Linkedin className="h-6 w-6 group-hover:text-neon-cyan" />
-    </div>
-    <span className="group-hover:text-white transition-colors">LinkedIn</span>
-  </a>
 
-  <div className="flex items-center gap-3 group">
-    <div className="p-2 bg-white/10 rounded-lg group-hover:bg-neon-pink/20 transition-all">
-      <MapPin className="h-6 w-6 group-hover:text-neon-pink" />
-    </div>
-    <span className="group-hover:text-white transition-colors">Visakhapatnam</span>
-  </div>
-</div>
+          <div className="flex justify-center gap-8 animate-fade-in stagger-4">
+            <a href="YOUR_GITHUB_LINK_HERE" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-transform duration-300 hover:scale-110">
+              <Github className="h-8 w-8" />
+            </a>
+            <a href="YOUR_LINKEDIN_LINK_HERE" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-transform duration-300 hover:scale-110">
+              <Linkedin className="h-8 w-8" />
+            </a>
+          </div>
         </div>
       </div>
+      <a href="#projects" className="absolute bottom-10 animate-bounce">
+        <ArrowDown className="h-8 w-8 text-white/50"/>
+      </a>
     </section>
   );
 };
