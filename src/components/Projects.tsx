@@ -5,42 +5,42 @@ import { Calendar, ExternalLink, Github, Users, TrendingUp, Database, Shield, Co
 
 const Projects = () => {
   const projects = [
-  {
-    title: "FundConnect",
-    subtitle: "Online Fundraising Platform",
-    status: "In Progress",
-    duration: "06/2025 – Present",
-    tech: "MERN Stack",
-    icon: Users,
-    description: "A comprehensive platform for creating, managing, and supporting fundraising campaigns",
-    features: [
-      "Developing a platform to create, manage, and support fundraising campaigns with secure user authentication and token-based protected routes",
-      "Implementing location-based campaign discovery to help users find and support causes within their region",
-      "Currently building dashboards and admin panel to manage 10+ test users and 20+ sample campaigns during development"
-    ],
-    technologies: ["MongoDB", "Express.js", "React.js", "Node.js", "JWT", "Location API"],
-    highlights: ["10+ test users", "20+ sample campaigns", "Secure authentication"],
-    statusColor: "bg-blue-500"
-  },
-  {
-    title: "EmpowerFund",
-    subtitle: "Investment & Financial Literacy Platform",
-    status: "Deployed",
-    duration: "02/2025 – 04/2025",
-    tech: "Full Stack",
-    icon: TrendingUp,
-    description: "An AI-driven financial platform with savings plans, calculators, and live stock data",
-    features: [
-      "Built a web app with AI-driven savings plans, 3+ financial calculators, and live stock data via Alpha Vantage API",
-      "Designed dashboards and learning modules to support 50+ test users in setting and tracking financial goals",
-      "Achieved smoother performance with ~30% faster load times and 20–25% improvement in API response during testing"
-    ],
-    technologies: ["React.js", "Alpha Vantage API", "AI/ML", "Dashboard", "Financial APIs"],
-    highlights: ["50+ test users", "30% faster load times", "20-25% API improvement"],
-    statusColor: "bg-green-500",
-    link: "https://empowerfund.onrender.com/" 
-  }
-];
+    {
+      title: "FundConnect",
+      subtitle: "Online Fundraising Platform",
+      status: "In Progress",
+      duration: "06/2025 – Present",
+      tech: "MERN Stack",
+      icon: Users,
+      description: "A comprehensive platform for creating, managing, and supporting fundraising campaigns",
+      features: [
+        "Developing a platform to create, manage, and support fundraising campaigns with secure user authentication and token-based protected routes",
+        "Implementing location-based campaign discovery to help users find and support causes within their region",
+        "Currently building dashboards and admin panel to manage 10+ test users and 20+ sample campaigns during development"
+      ],
+      technologies: ["MongoDB", "Express.js", "React.js", "Node.js", "JWT", "Location API"],
+      highlights: ["10+ test users", "20+ sample campaigns", "Secure authentication"],
+      statusColor: "bg-blue-500"
+    },
+    {
+      title: "EmpowerFund",
+      subtitle: "Investment & Financial Literacy Platform",
+      status: "Deployed",
+      duration: "02/2025 – 04/2025",
+      tech: "Full Stack",
+      icon: TrendingUp,
+      description: "An AI-driven financial platform with savings plans, calculators, and live stock data",
+      features: [
+        "Built a web app with AI-driven savings plans, 3+ financial calculators, and live stock data via Alpha Vantage API",
+        "Designed dashboards and learning modules to support 50+ test users in setting and tracking financial goals",
+        "Achieved smoother performance with ~30% faster load times and 20–25% improvement in API response during testing"
+      ],
+      technologies: ["React.js", "Alpha Vantage API", "AI/ML", "Dashboard", "Financial APIs"],
+      highlights: ["50+ test users", "30% faster load times", "20-25% API improvement"],
+      statusColor: "bg-green-500",
+      link: "https://empowerfund.onrender.com/" 
+    }
+  ];
 
   return (
     <section className="py-32 bg-background relative overflow-hidden">
@@ -148,20 +148,20 @@ const Projects = () => {
                 </div>
 
                 {project.link && (
-  <div className="pt-6 border-t border-border/50">
-    <Button
-      variant="gradient"
-      size="lg"
-      className="w-full neon-glow group"
-      asChild
-    >
-      <a href={project.link} target="_blank" rel="noopener noreferrer">
-        <ExternalLink className="h-5 w-5 mr-2 group-hover:rotate-12 transition-transform" />
-        {project.link}
-      </a>
-    </Button>
-  </div>
-)}
+                  <div className="pt-6 border-t border-border/50">
+                    <Button
+                      variant="gradient"
+                      size="lg"
+                      className="w-full neon-glow group"
+                      asChild
+                    >
+                      <a href={project.link} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="h-5 w-5 mr-2 group-hover:rotate-12 transition-transform" />
+                        Demo
+                      </a>
+                    </Button>
+                  </div>
+                )}
               </div>
             </div>
           ))}
