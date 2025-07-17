@@ -48,7 +48,7 @@ All colors MUST be HSL.
     --glass-bg: 225 25% 15%;
     
     /* Gradient definitions */
-    --hero-gradient: linear-gradient(135deg, hsl(271 100% 65%), hsl(320 100% 70%), hsl(180 100% 50%));
+    --hero-gradient: linear-gradient(135deg, hsl(225 25% 8%), hsl(225 25% 4%));
     --card-gradient: linear-gradient(135deg, hsl(225 25% 12%), hsl(225 25% 15%));
     --neon-gradient: linear-gradient(90deg, hsl(271 100% 65%), hsl(180 100% 50%));
     --accent-gradient: linear-gradient(45deg, hsl(320 100% 70%), hsl(271 100% 65%));
@@ -90,11 +90,14 @@ All colors MUST be HSL.
 }
 
 @layer components {
-  .hero-gradient {
-    background: var(--hero-gradient);
-    animation: gradientShift 8s ease-in-out infinite;
+  .dark-theme-background {
+    background-color: #0b0f19;
+    background-image:
+      radial-gradient(ellipse at top, transparent 0%, #0b0f19),
+      radial-gradient(ellipse at bottom, #0d2a48, transparent 100%);
+    animation: background-pan 15s ease-in-out infinite;
   }
-  
+
   .text-gradient {
     background: var(--neon-gradient);
     -webkit-background-clip: text;
@@ -182,6 +185,18 @@ All colors MUST be HSL.
   .stagger-3 { animation-delay: 0.3s; }
   .stagger-4 { animation-delay: 0.4s; }
   .stagger-5 { animation-delay: 0.5s; }
+}
+
+@keyframes background-pan {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
 }
 
 @keyframes gradientShift {

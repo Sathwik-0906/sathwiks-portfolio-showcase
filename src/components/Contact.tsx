@@ -42,7 +42,7 @@ const Contact = () => {
   ];
 
   return (
-    <section className="py-20 hero-gradient text-white relative overflow-hidden">
+    <section className="py-20 dark-theme-background text-white relative overflow-hidden">
       <div className="absolute inset-0 bg-black/20"></div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">

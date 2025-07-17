@@ -28,7 +28,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center hero-gradient relative overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center dark-theme-background relative overflow-hidden">
       {/* Animated background particles */}
       <div className="absolute inset-0">
         {particles.map((particle) => (
