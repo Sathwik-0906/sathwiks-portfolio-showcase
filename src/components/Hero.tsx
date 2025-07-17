@@ -69,25 +69,37 @@ const Hero = () => {
             </Button>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-8 text-white/80 animate-float-in stagger-5">
-            <div className="flex items-center gap-3 group cursor-pointer">
-              <div className="p-2 bg-white/10 rounded-lg group-hover:bg-neon-purple/20 transition-all">
-                <Github className="h-6 w-6 group-hover:text-neon-purple" />
-              </div>
-              <span className="group-hover:text-white transition-colors">GitHub</span>
-            </div>
-            <div className="flex items-center gap-3 group cursor-pointer">
-              <div className="p-2 bg-white/10 rounded-lg group-hover:bg-neon-cyan/20 transition-all">
-                <Linkedin className="h-6 w-6 group-hover:text-neon-cyan" />
-              </div>
-              <span className="group-hover:text-white transition-colors">LinkedIn</span>
-            </div>
-            <div className="flex items-center gap-3 group">
-              <div className="p-2 bg-white/10 rounded-lg group-hover:bg-neon-pink/20 transition-all">
-                <MapPin className="h-6 w-6 group-hover:text-neon-pink" />
-              </div>
-              <span className="group-hover:text-white transition-colors">Visakhapatnam</span>
-            </div>
-          </div>
+  <a 
+    href="https://github.com/Sathwik-0906" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    className="flex items-center gap-3 group cursor-pointer"
+  >
+    <div className="p-2 bg-white/10 rounded-lg group-hover:bg-neon-purple/20 transition-all">
+      <Github className="h-6 w-6 group-hover:text-neon-purple" />
+    </div>
+    <span className="group-hover:text-white transition-colors">GitHub</span>
+  </a>
+  
+  <a 
+    href="https://www.linkedin.com/in/sathwikgurugubelli/" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    className="flex items-center gap-3 group cursor-pointer"
+  >
+    <div className="p-2 bg-white/10 rounded-lg group-hover:bg-neon-cyan/20 transition-all">
+      <Linkedin className="h-6 w-6 group-hover:text-neon-cyan" />
+    </div>
+    <span className="group-hover:text-white transition-colors">LinkedIn</span>
+  </a>
+
+  <div className="flex items-center gap-3 group">
+    <div className="p-2 bg-white/10 rounded-lg group-hover:bg-neon-pink/20 transition-all">
+      <MapPin className="h-6 w-6 group-hover:text-neon-pink" />
+    </div>
+    <span className="group-hover:text-white transition-colors">Visakhapatnam</span>
+  </div>
+</div>
         </div>
       </div>
     </section>
