@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
+  { href: "#hero", label: "Home" },
   { href: "#projects", label: "Projects" },
   { href: "#experience", label: "Experience" },
   { href: "#skills", label: "Skills" },
@@ -12,64 +13,69 @@ const navLinks = [
 ];
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [indicatorStyle, setIndicatorStyle] = useState({});
+  const navRef = useRef<HTMLDivElement>(null);
+  const linksRef = useRef<(HTMLAnchorElement | null)[]>([]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const handleMouseEnter = (index: number) => {
+    const link = linksRef.current[index];
+    if (link && navRef.current) {
+      const navRect = navRef.current.getBoundingClientRect();
+      const linkRect = link.getBoundingClientRect();
+      setIndicatorStyle({
+        width: `${linkRect.width}px`,
+        transform: `translateX(${linkRect.left - navRect.left}px) scale(1)`,
+        opacity: 1,
+      });
+    }
+  };
 
-  const renderNavLinks = (isMobile = false) =>
-    navLinks.map((link) => (
-      <a
-        key={link.href}
-        href={link.href}
-        className={cn(
-          "glitch-link relative px-3 py-2 text-base font-medium text-neon-cyan/80 transition-colors hover:text-neon-cyan",
-          isMobile && "my-4 text-2xl"
-        )}
-        data-text={link.label}
-      >
-        {link.label}
-        <span className="glitch-link__layers"></span>
-        <span className="glitch-link__layers"></span>
-        <span className="glitch-link__layers"></span>
-      </a>
-    ));
+  const handleMouseLeave = () => {
+    setIndicatorStyle({
+      ...indicatorStyle,
+      transform: `${(indicatorStyle as any).transform || ''} scale(0)`,
+      opacity: 0,
+    });
+  };
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled ? "bg-black/30 backdrop-blur-md border-b border-neon-purple/20" : "bg-transparent"
-      )}
-    >
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-20">
-          <a href="#" className="text-2xl font-bold text-gradient">
-            Sathwik
+    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center">
+      <nav 
+        ref={navRef}
+        onMouseLeave={handleMouseLeave}
+        className="glass-nav mt-4 hidden md:flex items-center p-2 relative"
+      >
+        <div className="magnetic-indicator" style={indicatorStyle}></div>
+        {navLinks.map((link, index) => (
+          <a
+            key={link.href}
+            href={link.href}
+            ref={el => linksRef.current[index] = el}
+            onMouseEnter={() => handleMouseEnter(index)}
+            className="nav-link-3d z-10"
+          >
+            {link.label}
           </a>
-          <nav className="hidden md:flex items-center gap-2">
-            {renderNavLinks()}
-          </nav>
-          <div className="md:hidden">
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6 text-white" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="bg-darker-surface/90 border-l border-neon-purple/30 p-0">
-                <nav className="flex flex-col items-center justify-center h-full gap-8">
-                  {renderNavLinks(true)}
-                </nav>
-              </SheetContent>
-            </Sheet>
-          </div>
-        </div>
+        ))}
+      </nav>
+      {/* Mobile Menu */}
+      <div className="md:hidden fixed top-4 right-4 z-50">
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="ghost" size="icon" className="bg-black/20 backdrop-blur-sm">
+              <Menu className="h-6 w-6 text-white" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="right" className="bg-background/80 backdrop-blur-lg border-l border-neon-purple/20">
+            <nav className="flex flex-col items-center justify-center h-full gap-8">
+              {navLinks.map((link) => (
+                <a key={link.href} href={link.href} className="text-2xl text-white/80 hover:text-white transition-colors">
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          </SheetContent>
+        </Sheet>
       </div>
     </header>
   );

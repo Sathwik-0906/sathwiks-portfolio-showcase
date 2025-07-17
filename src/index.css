@@ -2,13 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 225 25% 8%;
+    --background: 225 15% 5%;
     --foreground: 210 100% 98%;
 
     --card: 225 25% 12%;
@@ -17,9 +13,9 @@ All colors MUST be HSL.
     --popover: 225 25% 12%;
     --popover-foreground: 210 100% 98%;
 
-    --primary: 271 100% 65%;
+    --primary: 271 100% 70%;
     --primary-foreground: 225 25% 8%;
-    --primary-hover: 271 100% 70%;
+    --primary-hover: 271 100% 75%;
 
     --secondary: 225 25% 15%;
     --secondary-foreground: 210 100% 98%;
@@ -27,330 +23,99 @@ All colors MUST be HSL.
     --muted: 225 25% 15%;
     --muted-foreground: 210 20% 65%;
 
-    --accent: 180 100% 50%;
+    --accent: 180 100% 55%;
     --accent-foreground: 225 25% 8%;
-    --accent-hover: 180 100% 55%;
+    --accent-hover: 180 100% 60%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 100% 98%;
 
     --border: 225 25% 20%;
     --input: 225 25% 20%;
-    --ring: 271 100% 65%;
+    --ring: 271 100% 70%;
 
-    /* Unique dark theme colors */
-    --neon-purple: 271 100% 65%;
-    --neon-cyan: 180 100% 50%;
+    --neon-purple: 271 100% 70%;
+    --neon-cyan: 180 100% 55%;
     --neon-pink: 320 100% 70%;
-    --neon-green: 120 100% 50%;
-    --dark-surface: 225 25% 12%;
-    --darker-surface: 225 25% 8%;
-    --glass-bg: 225 25% 15%;
     
-    /* Gradient definitions */
-    --hero-gradient: linear-gradient(135deg, hsl(225 25% 8%), hsl(225 25% 4%));
-    --card-gradient: linear-gradient(135deg, hsl(225 25% 12%), hsl(225 25% 15%));
-    --neon-gradient: linear-gradient(90deg, hsl(271 100% 65%), hsl(180 100% 50%));
-    --accent-gradient: linear-gradient(45deg, hsl(320 100% 70%), hsl(271 100% 65%));
-    
-    /* Animation variables */
-    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    --transition-elastic: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
-    --radius: 1rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --radius: 0.75rem;
   }
-
 }
 
 @layer base {
   * {
     @apply border-border;
   }
-
   body {
-    @apply bg-background text-foreground scroll-smooth;
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+  section {
+    @apply py-24 sm:py-32;
   }
 }
 
 @layer components {
-  .dark-theme-background {
-    background-color: #0b0f19;
-    background-image:
-      radial-gradient(ellipse at top, transparent 0%, #0b0f19),
-      radial-gradient(ellipse at bottom, #0d2a48, transparent 100%);
-    animation: background-pan 15s ease-in-out infinite;
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-neon-purple to-neon-cyan;
   }
 
-  .text-gradient {
-    background: var(--neon-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradientShift 3s ease-in-out infinite;
+  /* 3D Glass Button */
+  .glass-button-3d {
+    @apply relative inline-block px-8 py-4 rounded-lg text-white font-bold uppercase tracking-widest overflow-hidden transition-transform duration-300 ease-in-out;
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
   }
-  
-  .card-gradient {
-    background: var(--card-gradient);
-    backdrop-filter: blur(20px);
-    border: 1px solid hsl(var(--border));
+  .glass-button-3d::before {
+    content: '';
+    @apply absolute inset-0 rounded-lg border-2 border-neon-cyan/50 bg-white/5 backdrop-blur-sm transition-all duration-300;
   }
-  
-  .glass-card {
-    background: hsl(var(--glass-bg) / 0.4);
-    backdrop-filter: blur(20px);
-    border: 1px solid hsl(var(--border) / 0.2);
-    box-shadow: 0 8px 32px hsl(var(--background) / 0.3);
+  .glass-button-3d:hover::before {
+    @apply bg-white/10 border-neon-cyan;
+    box-shadow: 0 0 15px hsl(var(--neon-cyan) / 0.5), 0 0 30px hsl(var(--neon-cyan) / 0.3);
   }
-  
-  .neon-glow {
-    box-shadow: 
-      0 0 20px hsl(var(--neon-purple) / 0.5),
-      0 0 40px hsl(var(--neon-purple) / 0.3),
-      0 0 60px hsl(var(--neon-purple) / 0.1);
+  .glass-button-3d span {
+    @apply relative z-10;
   }
-  
-  .neon-border {
-    border: 1px solid hsl(var(--neon-purple) / 0.6);
-    box-shadow: 
-      inset 0 0 20px hsl(var(--neon-purple) / 0.1),
-      0 0 20px hsl(var(--neon-purple) / 0.4);
+
+  /* 3D Glass Navigation */
+  .glass-nav {
+    @apply fixed top-4 left-1/2 -translate-x-1/2 z-50 rounded-full border border-white/10 bg-black/20 backdrop-blur-lg shadow-2xl shadow-black/30;
   }
-  
-  .card-hover {
-    transition: var(--transition-elastic);
+  .nav-link-3d {
+    @apply relative px-5 py-3 text-sm font-medium text-white/70 transition-all duration-300;
     transform-style: preserve-3d;
   }
-  
-  .card-hover:hover {
-    transform: translateY(-12px) rotateX(5deg);
-    box-shadow: 
-      0 25px 50px -12px hsl(var(--background) / 0.4),
-      0 0 30px hsl(var(--neon-purple) / 0.3);
+  .nav-link-3d:hover {
+    @apply text-white;
+    transform: translateZ(20px);
   }
-  
-  .floating {
-    animation: floating 3s ease-in-out infinite;
-  }
-  
-  .pulse-neon {
-    animation: pulseNeon 2s ease-in-out infinite;
-  }
-  
-  .rotate-slow {
-    animation: rotateSlow 20s linear infinite;
-  }
-  
-  .parallax-bg {
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  
-  .animate-fade-in {
-    animation: fadeInUp 0.8s ease-out forwards;
-  }
-  
-  .animate-slide-up {
-    animation: slideUp 0.8s ease-out forwards;
-  }
-  
-  .animate-scale-in {
-    animation: scaleInBounce 0.6s ease-out forwards;
-  }
-  
-  .animate-float-in {
-    animation: floatIn 1s ease-out forwards;
-  }
-  
-  .stagger-1 { animation-delay: 0.1s; }
-  .stagger-2 { animation-delay: 0.2s; }
-  .stagger-3 { animation-delay: 0.3s; }
-  .stagger-4 { animation-delay: 0.4s; }
-  .stagger-5 { animation-delay: 0.5s; }
-}
-
-@keyframes background-pan {
-  0% {
-    background-position: 0% 0%;
-  }
-  50% {
-    background-position: 100% 100%;
-  }
-  100% {
-    background-position: 0% 0%;
+  .magnetic-indicator {
+    @apply absolute bottom-0 left-0 h-full rounded-full bg-white/10 transition-all duration-500 ease-magnetic;
+    transform-origin: center;
   }
 }
 
-@keyframes gradientShift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+/* Keyframes for animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes floating {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
 }
 
-@keyframes pulseNeon {
-  0%, 100% { 
-    box-shadow: 0 0 20px hsl(var(--neon-purple) / 0.5);
-  }
-  50% { 
-    box-shadow: 0 0 40px hsl(var(--neon-purple) / 0.8);
-  }
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
 }
 
-@keyframes rotateSlow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(60px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes scaleInBounce {
-  0% {
-    opacity: 0;
-    transform: scale(0.3);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  70% {
-    transform: scale(0.9);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes floatIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px) scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-
-
-
-@layer components {
-  /* ... (keep your existing styles) ... */
-
-  .animated-grid-background {
-    background-color: hsl(var(--darker-surface));
-    background-image:
-      linear-gradient(hsl(var(--neon-purple)/.15) 1px, transparent 1px),
-      linear-gradient(to right, hsl(var(--neon-cyan)/.15) 1px, transparent 1px);
-    background-size: 4rem 4rem;
-    animation: pan-grid 20s linear infinite;
-  }
-
-  .blinking-cursor {
-    animation: blink 1s step-end infinite;
-  }
-  
-  .glitch-link {
-    text-decoration: none;
-    line-height: 1;
-  }
-  
-  .glitch-link__layers {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-    color: hsl(var(--neon-cyan));
-  }
-  
-  .glitch-link__layers:nth-child(2) {
-    color: hsl(var(--neon-pink));
-  }
-  
-  .glitch-link__layers:nth-child(3) {
-    color: hsl(var(--primary));
-  }
-  
-  .glitch-link:hover .glitch-link__layers {
-    animation: glitch 350ms ease-in-out forwards;
-  }
-  
-  .glitch-link:hover .glitch-link__layers:nth-child(2) {
-    animation-delay: 50ms;
-  }
-  
-  .glitch-link:hover .glitch-link__layers:nth-child(3) {
-    animation-delay: 75ms;
-  }
-}
-
-
-@keyframes pan-grid {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 4rem 4rem;
-  }
-}
-
-@keyframes blink {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: hsl(var(--neon-cyan));
-  }
-}
-
-@keyframes glitch {
-  0% { transform: translate(0,0); opacity: 1; }
-  25% { transform: translate(2px, -2px); opacity: 0.75; }
-  50% { transform: translate(-2px, 2px); opacity: 0.5; }
-  75% { transform: translate(2px, 2px); opacity: 0.75; }
-  100% { transform: translate(0,0); opacity: 1; }
-}
+.stagger-1 { animation-delay: 0.2s; }
+.stagger-2 { animation-delay: 0.4s; }
+.stagger-3 { animation-delay: 0.6s; }
+.stagger-4 { animation-delay: 0.8s; }
