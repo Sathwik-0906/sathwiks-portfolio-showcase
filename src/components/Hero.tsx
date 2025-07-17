@@ -5,7 +5,12 @@ const Hero = () => {
     <section id="hero" className="min-h-screen relative flex items-center justify-center overflow-hidden">
       {/* 3D Animated Background */}
       <div className="absolute inset-0 z-0 perspective-1000">
-        <div className="stars-background"></div>
+        <div className="stars-background">
+          {/* More stars for a denser starfield */}
+          <div id="stars"></div>
+          <div id="stars2"></div>
+          <div id="stars3"></div>
+        </div>
         <div className="orbit-container">
           <div className="orbit-ring ring-1"></div>
           <div className="orbit-ring ring-2"></div>
