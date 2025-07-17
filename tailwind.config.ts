@@ -98,7 +98,11 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+			},
+            // Add the custom timing function here
+            transitionTimingFunction: {
+                'magnetic': 'cubic-bezier(0.25, 1, 0.5, 1)',
+            },
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
