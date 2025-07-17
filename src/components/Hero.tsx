@@ -31,8 +31,8 @@ const Hero = () => {
         <div className="text-center max-w-5xl mx-auto">
           <div className="animate-fade-in">
             <h1 className="text-6xl md:text-8xl font-bold mb-6 leading-tight">
-              <span className="block text-gradient animate-fade-in stagger-1">GURUGUBELLI</span>
-              <span className="block text-white/90 animate-fade-in stagger-2">SATHWIK</span>
+              <span className="block text-gradient animate-fade-in stagger-1">SATHWIK</span>
+              <span className="block text-white/90 animate-fade-in stagger-2">GURUGUBELLI</span>
             </h1>
           </div>
           <div className="animate-slide-up stagger-3">
