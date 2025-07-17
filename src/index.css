@@ -67,11 +67,13 @@
     @apply relative z-10;
   }
 
+  /* Centered and Enhanced Glass Navigation */
   .glass-nav {
-    @apply fixed top-4 left-1/2 -translate-x-1/2 z-50 rounded-full border border-white/10 bg-black/20 backdrop-blur-lg shadow-2xl shadow-black/30;
+    @apply fixed top-4 left-1/2 -translate-x-1/2 z-50 rounded-full border border-white/20 bg-slate-900/40 backdrop-blur-2xl shadow-lg shadow-black/40;
   }
+
   .nav-link-3d {
-    @apply relative px-5 py-3 text-sm font-medium text-white/70 transition-all duration-300;
+    @apply relative px-6 py-3 text-base font-medium text-white/80 transition-all duration-300;
     transform-style: preserve-3d;
   }
   .nav-link-3d:hover {
@@ -79,7 +81,7 @@
     transform: translateZ(20px);
   }
   .magnetic-indicator {
-    @apply absolute bottom-0 left-0 h-full rounded-full bg-neon-purple/50 transition-all duration-500 ease-magnetic;
+    @apply absolute bottom-0 left-0 h-full rounded-full bg-white/15 transition-all duration-500 ease-magnetic;
     transform-origin: center;
   }
 }

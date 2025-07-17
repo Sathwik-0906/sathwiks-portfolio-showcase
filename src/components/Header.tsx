@@ -39,47 +39,47 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center">
-        {/* Desktop Navigation */}
-        <nav 
-            ref={navRef}
-            onMouseLeave={handleMouseLeave}
-            className="glass-nav mt-4 hidden md:flex items-center p-2 relative"
-        >
-            <div className="magnetic-indicator" style={indicatorStyle}></div>
-            {navLinks.map((link, index) => (
-            <a
-                key={link.href}
-                href={link.href}
-                ref={el => linksRef.current[index] = el}
-                onMouseEnter={() => handleMouseEnter(index)}
-                className="nav-link-3d z-10"
-            >
-                {link.label}
-            </a>
-            ))}
-        </nav>
+    <>
+      {/* Desktop Navigation */}
+      <nav 
+        ref={navRef}
+        onMouseLeave={handleMouseLeave}
+        className="glass-nav mt-4 hidden md:flex items-center p-2"
+      >
+        <div className="magnetic-indicator" style={indicatorStyle}></div>
+        {navLinks.map((link, index) => (
+          <a
+            key={link.href}
+            href={link.href}
+            ref={el => linksRef.current[index] = el}
+            onMouseEnter={() => handleMouseEnter(index)}
+            className="nav-link-3d z-10"
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
 
-        {/* Mobile Navigation */}
-        <div className="md:hidden fixed top-4 right-4 z-50">
-            <Sheet>
-            <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="bg-black/30 backdrop-blur-sm rounded-full w-12 h-12">
-                <Menu className="h-6 w-6 text-white" />
-                </Button>
-            </SheetTrigger>
-            <SheetContent side="bottom" className="bg-background/80 backdrop-blur-lg border-t border-neon-purple/20 h-[60vh] rounded-t-3xl">
-                <nav className="flex flex-col items-center justify-center h-full gap-6">
-                {navLinks.map((link) => (
-                    <a key={link.href} href={link.href} className="text-2xl text-white/80 hover:text-white transition-colors">
-                    {link.label}
-                    </a>
-                ))}
-                </nav>
-            </SheetContent>
-            </Sheet>
-        </div>
-    </header>
+      {/* Mobile Navigation */}
+      <div className="md:hidden fixed top-4 right-4 z-50">
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="ghost" size="icon" className="bg-black/30 backdrop-blur-sm rounded-full w-12 h-12">
+              <Menu className="h-6 w-6 text-white" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="bottom" className="bg-background/80 backdrop-blur-lg border-t border-neon-purple/20 h-[60vh] rounded-t-3xl">
+            <nav className="flex flex-col items-center justify-center h-full gap-6">
+              {navLinks.map((link) => (
+                <a key={link.href} href={link.href} className="text-2xl text-white/80 hover:text-white transition-colors">
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          </SheetContent>
+        </Sheet>
+      </div>
+    </>
   );
 };
 
