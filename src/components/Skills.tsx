@@ -58,7 +58,7 @@ const Skills = () => {
           {/* Skills Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {skillCategories.map((category, index) => (
-              <Card key={index} className="card-hover border-none shadow-lg bg-card/50 backdrop-blur-sm">
+              <Card key={index} className="card-hover glass-card neon-border">
                 <CardHeader className="pb-4">
                   <div className="flex items-center gap-3 mb-2">
                     <div className={`p-2 ${category.color} rounded-lg`}>
@@ -85,7 +85,7 @@ const Skills = () => {
           </div>
 
           {/* Certifications */}
-          <Card className="card-hover border-none shadow-lg bg-card/50 backdrop-blur-sm">
+          <Card className="card-hover glass-card neon-border">
             <CardHeader className="pb-4">
               <div className="flex items-center gap-3">
                 <div className="p-3 bg-accent/10 rounded-lg">
@@ -110,7 +110,7 @@ const Skills = () => {
 
           {/* Problem Solving Stats */}
           <div className="mt-8 grid md:grid-cols-3 gap-6">
-            <Card className="card-hover border-none shadow-lg bg-gradient-to-br from-primary/10 to-accent/10 backdrop-blur-sm">
+            <Card className="card-hover glass-card neon-border">
               <CardContent className="p-6 text-center">
                 <div className="p-3 bg-primary/10 rounded-lg inline-block mb-4">
                   <Brain className="h-8 w-8 text-primary" />
@@ -121,7 +121,7 @@ const Skills = () => {
               </CardContent>
             </Card>
             
-            <Card className="card-hover border-none shadow-lg bg-gradient-to-br from-accent/10 to-primary/10 backdrop-blur-sm">
+            <Card className="card-hover glass-card neon-border">
               <CardContent className="p-6 text-center">
                 <div className="p-3 bg-accent/10 rounded-lg inline-block mb-4">
                   <Users className="h-8 w-8 text-accent" />
@@ -132,7 +132,7 @@ const Skills = () => {
               </CardContent>
             </Card>
             
-            <Card className="card-hover border-none shadow-lg bg-gradient-to-br from-primary/10 to-accent/10 backdrop-blur-sm">
+            <Card className="card-hover glass-card neon-border">
               <CardContent className="p-6 text-center">
                 <div className="p-3 bg-primary/10 rounded-lg inline-block mb-4">
                   <Award className="h-8 w-8 text-primary" />

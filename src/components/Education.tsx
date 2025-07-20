@@ -26,7 +26,7 @@ const Education = () => {
         </div>
 
         <div className="max-w-5xl mx-auto animate-scale-in">
-          <div className="glass-card neon-border p-8 card-hover">
+          <div className="glass-effect p-8 card-hover">
             <div className="mb-8">
               <div className="flex items-start justify-between flex-wrap gap-6">
                 <div className="flex items-center gap-4">
@@ -48,7 +48,7 @@ const Education = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
                 <h4 className="text-2xl font-bold mb-3 text-foreground">
@@ -62,7 +62,7 @@ const Education = () => {
                   <span className="text-sm text-muted-foreground">Currently Pursuing</span>
                 </div>
               </div>
-              
+
               <div className="flex items-center justify-center md:justify-end">
                 <div className="p-6 bg-gradient-to-br from-neon-purple/20 to-neon-cyan/20 rounded-2xl neon-border text-center">
                   <div className="flex items-center justify-center gap-3 mb-4">

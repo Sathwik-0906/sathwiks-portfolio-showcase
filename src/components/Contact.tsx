@@ -50,7 +50,7 @@ const Contact = () => {
             Get In Touch
           </h2>
           <p className="text-white/90 text-lg max-w-2xl mx-auto">
-            I'm always open to discussing new opportunities, collaborations, and exciting projects. 
+            I'm always open to discussing new opportunities, collaborations, and exciting projects.
             Let's connect and create something amazing together!
           </p>
         </div>
@@ -58,7 +58,7 @@ const Contact = () => {
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {contactInfo.map((contact, index) => (
-              <Card key={index} className="bg-white/10 border-white/20 backdrop-blur-sm hover:bg-white/20 transition-all duration-300">
+              <Card key={index} className="glass-effect hover:bg-white/20 transition-all duration-300">
                 <CardContent className="p-6 text-center">
                   <div className="p-3 bg-white/10 rounded-lg inline-block mb-4">
                     <contact.icon className="h-6 w-6 text-white" />
@@ -69,7 +69,7 @@ const Contact = () => {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="bg-white/10 border-white/30 text-white hover:bg-white/20"
+                      className="glass-effect text-white hover:bg-white/20"
                       asChild
                     >
                       <a href={contact.href}>
@@ -98,7 +98,7 @@ const Contact = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="bg-white/10 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm"
+                className="glass-effect text-white hover:bg-white/20"
                 asChild
               >
                 <a href="https://drive.google.com/file/d/1vffiYX1lNLBsZcMhIQmKkla9qMKYF8Qn/view?usp=sharing" download>
@@ -107,7 +107,7 @@ const Contact = () => {
                 </a>
               </Button>
             </div>
-            
+
             <div className="pt-8 border-t border-white/20">
               <p className="text-white/70 text-sm">
                 Ready to bring innovative ideas to life through code and creativity
@@ -116,7 +116,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Decorative elements */}
       <div className="absolute top-10 left-10 w-32 h-32 bg-white/5 rounded-full blur-xl"></div>
       <div className="absolute bottom-10 right-10 w-24 h-24 bg-white/5 rounded-full blur-xl"></div>

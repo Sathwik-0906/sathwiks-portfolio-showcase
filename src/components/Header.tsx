@@ -41,7 +41,7 @@ const Header = () => {
   return (
     <>
       {/* Desktop Navigation */}
-      <nav 
+      <nav
         ref={navRef}
         onMouseLeave={handleMouseLeave}
         className="glass-nav mt-4 hidden md:flex items-center p-2"
@@ -64,11 +64,11 @@ const Header = () => {
       <div className="md:hidden fixed top-4 right-4 z-50">
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="bg-black/30 backdrop-blur-sm rounded-full w-12 h-12">
+            <Button variant="ghost" size="icon" className="glass-effect rounded-full w-12 h-12">
               <Menu className="h-6 w-6 text-white" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="bottom" className="bg-background/80 backdrop-blur-lg border-t border-neon-purple/20 h-[60vh] rounded-t-3xl">
+          <SheetContent side="bottom" className="glass-effect border-t border-neon-purple/20 h-[60vh] rounded-t-3xl">
             <nav className="flex flex-col items-center justify-center h-full gap-6">
               {navLinks.map((link) => (
                 <a key={link.href} href={link.href} className="text-2xl text-white/80 hover:text-white transition-colors">
